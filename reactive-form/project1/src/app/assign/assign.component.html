@@ -1,0 +1,35 @@
+<div class="container mt-5 w-50 shadow p-4">
+    <div>
+        <h3 class="text-center">Login form Email validators </h3>
+    </div>
+<form [formGroup]="LoginForm" (ngSubmit)="save()">
+    <div class="mb-3">
+            <div class="md-3">
+                <label for="fName">First Name</label>
+                <input type="text" name="fName" id="id1" class="form-control" formControlName="FirstName">
+            </div>
+            <div class="mb-3">
+                <label for="LName">Last Name</label>
+                <input type="text" name="lName" id="id2" class="form-control" formControlName="LastName">
+            </div>
+            <div class="mb-3">
+                <label for="Email">Email</label>
+                <input type="text" name="Email" id="id3" class="form-control" formControlName="Email">
+                <div *ngIf="Email?.errors?.['notgmail']" class="invalid-feedback d-block">
+                    it is not valid Email id.
+                 </div>
+            </div>
+          
+            <div class="mb-3">
+                <label for="Cemail">confirm Email</label>
+                <input type="text" name="checkgmail" id="id4" class="form-control" formControlName="checkgmail">
+                <div *ngIf="checkgmail?.errors?.['notgmail']" class="invalid-feedback d-block">
+                    it is not valid Email id.
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary mt-4 px-4" >Save</button>
+            </div>
+    </div>
+</form>
+</div>

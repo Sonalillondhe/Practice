@@ -1,0 +1,36 @@
+<div class="container mt-5 w-50 shadow p-4">
+  <form #productform="ngForm" (ngSubmit)="save()">
+    <div class="row">
+      <h4 class="text-center">Product Details</h4>
+    </div>
+    <div class="mb-3">
+      <label for="id1" class="form-label">Category</label>
+      <input type="text" class="form-control" id="id1" name="category" [(ngModel)]="Product.PCategory">
+    </div>
+    <div class="mb-3">
+      <label for="id2" class="form-label">Product Name</label>
+      <input type="text" class="form-control" id="id2" name="pname" [(ngModel)]="Product.PName">
+    </div>
+    <div class="mb-3">
+      <label for="id3" class="form-label">Quantity</label>
+      <input type="number" class="form-control" id="id3" name="quantity" #quantity="ngModel" pattern="[0-9]"
+        [(ngModel)]="Product.PQuantity">
+    </div>
+    <div class="mb-3">
+      <label for="id4" class="form-label">Price</label>
+      <input type="number" class="form-control" id="id4" name="price" #price="ngModel" pattern="[0-9]" ngModel
+        [(ngModel)]="Product.Pprice">
+    </div>
+    <div class="mb-3">
+      <label for="id5" class="form-label">Total Price</label>
+      <input type="text" class="form-control" id="id5" name="total" pattern="[0-9]" [(ngModel)]="Product.TPrice"
+        (click)="TotalPrice()" [value]="Product.TPrice">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button> &nbsp;&nbsp;&nbsp;
+    <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button> &nbsp;&nbsp;&nbsp;
+    <button type="submit" class="btn btn-primary" (click)="getData()">Get Data</button>
+  </form>
+  <div class="mt-5">
+    <div class="mt-1"><span class="fw-bold"> Values : {{productform.value|json}}</span>:&nbsp;</div>
+  </div>
+</div>

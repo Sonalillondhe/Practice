@@ -1,0 +1,39 @@
+<div class="container mt-5 w-50 shadow p-4">
+    <div class="row">
+        <h4 class="text-center">Reactive Form Assignment</h4>
+    </div><hr>
+    <form [formGroup]="productForm" (ngSubmit)="save()">
+      <div class="row">
+        <h4 class="text-center">Product Details</h4>
+      </div>
+      <div class="mb-3">
+        <label for="id1" class="form-label">Category</label>
+        <input type="text" class="form-control" id="id1" name="PCategory"  formControlName="PCategory">
+      </div>
+
+      <div class="mb-3">
+        <label for="id2" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="id2" name="PName"  formControlName="PName">
+      </div>
+
+      <div class="mb-3">
+        <label for="id3" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="id3" name="PQuantity" formControlName="PQuantity" >
+      </div>
+
+      <div class="mb-3">
+        <label for="id4" class="form-label">Price</label>
+        <input type="number" class="form-control" id="id4" name="Pprice" formControlName="Pprice">
+      </div>
+
+      <div class="mb-3">
+        <label for="id5" class="form-label">Total Price</label>
+        <input type="number" class="form-control" id="id5" name="total" [value]="TPrice" formControlName="TPrice" >
+      </div>
+      
+      <button type="submit" class="btn btn-primary" >Save</button> &nbsp;&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary" (click)="getData()">Get Data</button> &nbsp;&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button> &nbsp;&nbsp;&nbsp;
+     
+    </form>
+  </div>

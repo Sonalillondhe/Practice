@@ -1,0 +1,46 @@
+<div class="container mt-5 w-50 shadow p-4">
+    <div>
+        <h3 class="text-center">Custom validators</h3>
+    </div>
+<form [formGroup]="LoginForm" (ngSubmit)="save()">
+    <div class="mb-3">
+            <div class="md-3">
+                <label for="fName">First Name</label>
+                <input type="text" name="fName" id="id1" class="form-control" formControlName="FirstName">
+            </div>
+            <div class="mb-3">
+                <label for="fName">Last Name</label>
+                <input type="text" name="lName" id="id2" class="form-control" formControlName="LastName">
+            </div>
+            <div class="mb-3">
+                <label for="mobNo">password</label>
+                <input type="text" name="pass" id="id3" class="form-control" formControlName="Password">
+            </div>
+            <div *ngIf="Password.touched && Password.invalid">
+                <div class="invalid-feedback d-block" *ngIf="Password?.errors?.['required']">
+                 It is required field
+                 </div>
+         </div>
+
+            <div class="mb-3">
+                <label for="email">confirm password</label>
+                <input type="text" name="Cpass" id="id4" class="form-control" formControlName="Cpassword">
+                <div *ngIf="Cpassword?.errors?.['passwordMismatch']" class="invalid-feedback d-block">
+                    Password and Confirm Password should Match
+                 </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="age">Age</label>
+                <input type="text" name="Age" id="id5" class="form-control" formControlName="Age">
+                <div *ngIf="Age?.errors?.['ageNotMatch']" class="invalid-feedback d-block">
+                   age shuld be greater than 18
+                 </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary mt-4 px-4" [disabled]="LoginForm.invalid">Save</button>
+            </div>
+    </div>
+</form>
+</div>

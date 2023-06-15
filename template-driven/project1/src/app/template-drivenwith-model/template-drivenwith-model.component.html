@@ -1,0 +1,62 @@
+<div class="container mt-5 w-50 shadow p-4">
+  <div class="row">
+    <h4 class="text-center">Template Driven Form With model</h4>
+  </div>
+  <form #signupForm="ngForm" (ngSubmit)="save()">
+      <div class="mb-3">
+          <label for="id1" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="id1" name="fName"  [(ngModel)]="signUpForm.firstName"required pattern="[a-zA-Z]{2,10}" minlength="2" #fName="ngModel">
+          <div class="row" *ngIf="fName.touched &&  fName.invalid">
+               <div class="invalid-feedback d-block" *ngIf="fName.errors?.['required']">It is required</div>
+                <div class="invalid-feedback d-block" *ngIf="fName.errors?.['pattern']">Please enter the valid name</div>
+                <div class="invalid-feedback d-block" *ngIf="fName.errors?.['minlength']">Minimum 2 characters are required</div>
+          </div>
+      </div>
+      <div class="mb-3">
+          <label for="id2" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="id2" name="lName" [(ngModel)]="signUpForm.lastName">
+      </div>
+      <div class="mb-3">
+          <label for="id3" class="form-label">Mobile Number</label>
+          <input type="text" class="form-control" id="id3" name="mobNo" required [(ngModel)]="signUpForm.mobileNo">
+      </div>
+      <div class="mb-3">
+        <label for="id5" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="id4" name="email" [(ngModel)]="signUpForm.emailAddress">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="pwd" [(ngModel)]="signUpForm.password">
+      </div>
+
+      <div class="mb-3">
+             <label for="state" class="form-label">State</label>
+             <select name="state" id="10" class="form-control" [(ngModel)]="signUpForm.state" 
+             (ngModelChange)="getCities()">
+               <option *ngFor="let item of States">{{item}}</option>
+             </select>
+      </div>
+      <div class="mb-3">
+          <label for="city" class="form-label">City</label>
+          <select name="city" id="id11" class="form-control" [(ngModel)]="signUpForm.city">
+            <option *ngFor="let item of cities" [value]="item">{{item}}</option>
+          </select>
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Submit</button>
+      <button type="button" class="btn btn-primary mx-2" (click)="getData()">Get Data</button>
+    </form>
+    <div class="mt-5">
+       <div class="mt-1"><span class="fw-bold"> Value</span>:&nbsp;{{signupForm.value | json}}</div>
+       <div class="mt-1"> <span class="fw-bold">Touched</span>&nbsp;{{signupForm.touched}}</div>
+       <div class="mt-1"><span class="fw-bold"> Untouched</span>&nbsp;{{signupForm.untouched}}</div>
+       <div class="mt-1"><span class="fw-bold"> Dirty</span>&nbsp;{{signupForm.dirty}}</div>
+       <div class="mt-1"><span class="fw-bold"> Pristine</span>&nbsp;{{signupForm.pristine}}</div>
+       <div class="mt-1"><span class="fw-bold"> valid</span>&nbsp;{{signupForm.valid}}</div>
+       <div class="mt-1"><span class="fw-bold"> invalid</span>&nbsp;{{signupForm.invalid}}</div>
+    </div>
+</div>

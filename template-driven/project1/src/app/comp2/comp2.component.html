@@ -1,0 +1,58 @@
+<div class="container mt-5 w-50 shadow p-4">
+    <div class="row">
+      <h4 class="text-center">Template Driven Form With two day data binding and model</h4>
+    </div>
+    <form #signupForm="ngForm" (ngSubmit)="save()">
+        <div class="mb-3">
+            <label for="id1" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="id1" name="fName" 
+            [(ngModel)]="signUpForm.firstName" required pattern="[a-zA-Z]{2,10}" minlength="2" #fName="ngModel">
+        </div>
+        <div class="mb-3">
+            <label for="id2" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="id2" name="lName" [(ngModel)]="signUpForm.lastName">
+        </div>
+        <div class="mb-3">
+            <label for="id3" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="id3" name="mobNo" required [(ngModel)]="signUpForm.mobileNo">
+        </div>
+        <div class="mb-3">
+          <label for="id5" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="id5" name="email" [(ngModel)]="signUpForm.emailAddress">
+        </div>
+      
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="pwd" [(ngModel)]="signUpForm.password">
+        </div>
+        <!-- Assignment -->
+      <div class="mb-3">
+        <label for="id5" class="form-label">Enter DOB</label>
+        <input type="date" class="form-control" id="id5" name="dob" [(ngModel)]="signUpForm.dateOfBirth"
+        (ngModelChange)="calculateAge()">
+    </div>
+    <div class="mb-3">
+      <label for="id6" class="form-label">Age</label>
+      <input type="text" class="form-control" id="id6" name="age" [(ngModel)]="signUpForm.age">
+    </div>
+       <!-- Assignment -->
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> 
+        <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Submit</button>
+        <button type="button" class="btn btn-primary mx-2" (click)="getData()">Get Data</button>
+        <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button> &nbsp;&nbsp;&nbsp;
+
+      </form>
+      <!-- <div class="mt-5">
+         <div class="mt-1"><span class="fw-bold"> Value</span>:&nbsp;{{signupForm.value | json}}</div>
+         <div class="mt-1"> <span class="fw-bold">Touched</span>&nbsp;{{signupForm.touched}}</div>
+         <div class="mt-1"><span class="fw-bold"> Untouched</span>&nbsp;{{signupForm.untouched}}</div>
+         <div class="mt-1"><span class="fw-bold"> Dirty</span>&nbsp;{{signupForm.dirty}}</div>
+         <div class="mt-1"><span class="fw-bold"> Pristine</span>&nbsp;{{signupForm.pristine}}</div>
+         <div class="mt-1"><span class="fw-bold"> valid</span>&nbsp;{{signupForm.valid}}</div>
+         <div class="mt-1"><span class="fw-bold"> invalid</span>&nbsp;{{signupForm.invalid}}</div>
+      </div> -->
+  </div>
